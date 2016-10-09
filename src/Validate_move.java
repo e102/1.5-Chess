@@ -23,6 +23,50 @@ public class Validate_move {
 		}
 		
 		
+		//piece specific checks
+		if(current_piece == Chessmen.WHITE_PAWN){
+			if(y2 <= y1){	//cannot move backwards or stay in place
+				return false;
+			}
+			if((y1+2) < y2){	//cannot move more than 2 spaces
+				return false;
+			}
+			if((y1+2) == y2 && y1 != 1){	//can only move 2 spaces from starting position.
+				return false;
+			}
+			if((x1 + 1 == x2 || x1 - 1 == x2) && target_piece != Chessmen.EMPTY && !target_piece_colour.equals(piece_colour) && (y1+1) == y2){	//can only move in same column unless capturing another piece
+				return true;
+			}
+			if(x1 != x2){	//cannot move diagonally unless capturing
+				return false;
+			}
+			return true;
+		}
+		
+		if(current_piece == Chessmen.BLACK_PAWN){
+			if(y2 >= y1){	//cannot move backwards or stay in place
+				return false;
+			}
+			if((y1-2) < y2){	//cannot move more than 2 spaces
+				return false;
+			}
+			if((y1-2) == y2 && y1 != 6){	//can only move 2 spaces from starting position.
+				return false;
+			}
+			if((x1 + 1 == x2 || x1 - 1 == x2) && target_piece != Chessmen.EMPTY && !target_piece_colour.equals(piece_colour) && (y1-1) == y2){	//can only move in same column unless capturing another piece
+				return true;
+			}
+			if(x1 != x2){	//cannot move diagonally unless capturing
+				return false;
+			}
+			return true;
+		}
+		
+		if(current_piece == Chessmen.BLACK_ROOK || current_piece == Chessmen.WHITE_ROOK){
+			if(y1 != y2 && x1 != x2){
+				return false;
+			}
+		}
 		
 		
 	}
