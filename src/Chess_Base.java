@@ -65,7 +65,10 @@ public class Chess_Base {
 			y2--;
 			
 			
-			move_piece.move(chessboard, x1, y1, x2, y2, current_player);
+			int valid_move = move_piece.move(chessboard, x1, y1, x2, y2, current_player);
+			if(valid_move == 0){
+				continue;
+			}
 			Board_DIsplay.print(chessboard);
 			
 			current_player = next_player;
