@@ -12,29 +12,29 @@ public class Validate_move {
 		Chessmen target_piece = chessboard[x2][y2];
 		
 		if(x1<0 || x1>7 || x2<0 || x2>7 || y1<0 || y1>7 || y2<0 || y2>7){	//players cannot select locations outside of the board
-			System.out.println("Illegal move. Location selected is not on board. Turn forfitted.");
+			System.out.println("Illegal move. Location selected is not on board. Please try Again.");
 			return false;
 		}
 		
 		if(current_piece == Chessmen.EMPTY){	//can't move a space without a piece
-			System.out.println("Illegal move. Location selected does not contain a piece. Turn forfitted.");
+			System.out.println("Illegal move. Location selected does not contain a piece. Please try again.");
 			return false;
 		}
 		
 		if(x1 == x2 && y1 == y2){
-			System.out.println("Illegal move. You cannot move a piece to it's current location. Turn forfitted");
+			System.out.println("Illegal move. You cannot move a piece to it's current location. Please try again");
 		}
 		
 		String piece_colour = Determine_Colour.B_or_W(current_piece);
 		String target_piece_colour = Determine_Colour.B_or_W(target_piece);
 		
 		if(!piece_colour.equals(current_player)){	//players can only move their own pieces
-			System.out.println("Illegal move. Piece selected is not yours to move. Turn forfitted.");
+			System.out.println("Illegal move. Piece selected is not yours to move. Please try again.");
 			return false;
 		}
 		
 		if(current_player.equals(target_piece_colour)){	//players can only take opposing pieces (no castling implemented)
-			System.out.println("Illegal move. You cannot take your own pieces. Turn forfitted.");
+			System.out.println("Illegal move. You cannot take your own pieces. Please try again.");
 			return false;
 		}
 		
@@ -271,7 +271,7 @@ public class Validate_move {
 			}
 			return true;
 		}
-		System.out.println("Serious error. Validation check did not return a result");
+		System.err.println("Serious error. Validation check did not return a result");
 		return false; //has to be here to avoid "must return boolean" error. Shouldn't ever be used
 	}
 }

@@ -67,11 +67,38 @@ public class Chess_Base {
 			
 			int valid_move = move_piece.move(chessboard, x1, y1, x2, y2, current_player);
 			if(valid_move == 0){
+				Board_DIsplay.print(chessboard);
 				continue;
 			}
-			Board_DIsplay.print(chessboard);
+			else{
+				Board_DIsplay.print(chessboard);
+			}
 			
 			current_player = next_player;
+			
+			//checking for victory
+			int black_king = 0;
+			int white_king = 0;
+			for (int x = 0; x < chessboard.length; x++) {
+				for (int y = 0; y < chessboard.length; y++){
+					if(chessboard[x][y]== Chessmen.WHITE_KING){
+						white_king = 1;
+					}
+					if(chessboard[x][y]== Chessmen.BLACK_KING){
+						black_king = 1;
+					}
+				}
+			}
+			if(white_king == 0){
+				System.out.println();
+				System.out.println("Black has won");
+				System.exit(0);
+			}
+			if(black_king == 0){
+				System.out.println();
+				System.out.println("White has won");
+				System.exit(0);
+			}
 		}
 	}
 }

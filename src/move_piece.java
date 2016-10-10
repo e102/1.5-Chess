@@ -8,7 +8,7 @@ public class move_piece {
 			return 1;
 		}
 		else{
-			System.err.println("Invalid move. Turn forfitted.");
+			System.err.println("Invalid move. Please try again.");
 			return 0;
 		}
 	}
