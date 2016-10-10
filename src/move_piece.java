@@ -6,5 +6,8 @@ public class move_piece {
 			chessboard[x1][y1] = Chessmen.EMPTY;
 			chessboard[x2][y2] = current_piece;
 		}
+		else{
+			System.err.println("Invalid move. Turn forfitted.");
+		}
 	}
 }

@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import static java.lang.Math.*;
 
 public class Chess_Base {
 	public static void main(String[] args) {
@@ -12,26 +11,38 @@ public class Chess_Base {
 		String move_to;
 		
 		Scanner s = new Scanner(System.in);
-		
+		System.out.println();
 		System.out.println("Hey. If you want to quit at any time, type exit instead of your normal command.");
 		while(true){
 			if(current_player == "white"){
+				System.out.println();
 				System.out.println("White plays");
 				next_player = "black";
 			}
 			else if(current_player == "black"){
+				System.out.println();
 				System.out.println("Black plays");
 				next_player = "white";
 			}
 			else{
 				System.out.println("ERRRRROOOOOORRRRRR");
-				next_player = "white";
 			}
 			
 			System.out.println("Enter the location of the piece you want to move. (i.e: b6)");
 			move_from = s.nextLine();
+			
+			if(!Input_Validation.valid(move_from)){
+				System.out.println("Bad input. Please try again");
+				continue;
+			}
+			
 			System.out.println("Where to?");
 			move_to = s.nextLine();
+			
+			if(!Input_Validation.valid(move_to)){
+				System.out.println("Bad input. Please try again");
+				continue;
+			}
 			
 			if(move_from.equals("exit")|| move_to.equals("exit")){
 				System.out.println("Goodbye.");

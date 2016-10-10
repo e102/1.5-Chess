@@ -124,7 +124,14 @@ public class Validate_move {
 		}
 		
 		if(current_piece == Chessmen.BLACK_KNIGHT || current_piece == Chessmen.WHITE_KNIGHT){
-			//nothing needed for knight. Knight jumps over intervening pieces.
+			//Knight jumps over intervening pieces. No collision detection needed.
+			if(Math.abs(x1 - x2) == 2 && Math.abs(y1 - y2) == 1){	//must be diagonal
+				return true;
+			}
+			if(Math.abs(x1 - x2) == 1 && Math.abs(y1 - y2) == 2){	//must be diagonal
+				return true;
+			}
+			return false;
 		}
 		
 		if(current_piece == Chessmen.BLACK_BISHOP || current_piece == Chessmen.WHITE_BISHOP){

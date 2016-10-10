@@ -11,7 +11,7 @@ public class Letter_to_number {
 		case "f": return 5;
 		case "g": return 6;
 		case "h": return 7;
-		default: System.out.println("Error in letter to number");System.exit(0); return 150;
+		default: return 150;
 		}
 	}
 
