@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import static java.lang.Math.*;
 
 public class Chess_Base {
 	public static void main(String[] args) {
@@ -6,7 +7,7 @@ public class Chess_Base {
 		Board_DIsplay.print(chessboard);
 		
 		String current_player = "white";
-		String next_player;
+		String next_player = "black";
 		String move_from;
 		String move_to;
 		
@@ -18,8 +19,12 @@ public class Chess_Base {
 				System.out.println("White plays");
 				next_player = "black";
 			}
-			else{
+			else if(current_player == "black"){
 				System.out.println("Black plays");
+				next_player = "white";
+			}
+			else{
+				System.out.println("ERRRRROOOOOORRRRRR");
 				next_player = "white";
 			}
 			
@@ -33,7 +38,23 @@ public class Chess_Base {
 				System.exit(0);
 			}
 			
-			move_piece.move(chessboard,move_from,move_to,current_player);
+			//converting strings entered to xy coordinates
+			String from_x = move_from.substring(0, 1);	//a - h
+			String from_y = move_from.substring(1);	// 1 - 8
+			
+			String to_x = move_to.substring(0, 1);	//a - h
+			String to_y = move_to.substring(1);	// 1 - 8
+			
+			int x1 = Letter_to_number.convert(from_x);
+			int y1 = Integer.parseInt(from_y);
+			y1--;
+			
+			int x2 = Letter_to_number.convert(to_x);
+			int y2 = Integer.parseInt(to_y);
+			y2--;
+			
+			
+			move_piece.move(chessboard, x1, y1, x2, y2, current_player);
 			Board_DIsplay.print(chessboard);
 			
 			current_player = next_player;

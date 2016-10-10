@@ -16,7 +16,7 @@ public class Determine_Colour {
 		case WHITE_QUEEN:
 		case WHITE_ROOK: 
 			return "white";
-		case EMPTY:System.err.println("Something wrong.A piece is not black or white.");
+		case EMPTY:return "empty";
 		default: 
 			return "error";
 		}
