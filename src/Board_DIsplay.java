@@ -37,5 +37,6 @@ public class Board_DIsplay {
 				}
 			}
 		}
+		System.out.println();
 	}
 }
